@@ -350,38 +350,78 @@
     .exp-grid { margin-top: 56px; }
     .exp-item {
       display: grid; grid-template-columns: 180px 1fr; gap: clamp(32px, 4vw, 80px);
-      padding: 36px 32px; margin-bottom: 12px;
+      padding: 36px 32px; margin-bottom: 16px;
       border-radius: var(--radius);
-      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(135deg, #111118 0%, #0e0e14 100%);
+      border: 1px solid rgba(255,255,255,0.07);
       position: relative; overflow: hidden;
-      transition: border-color 0.4s ease, transform 0.3s ease;
+      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
     }
+    /* Subtle ambient glow top-right */
+    .exp-item::after {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,92,231,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      transition: opacity 0.5s ease; opacity: 1;
+    }
+    /* Left accent bar — always visible at low opacity */
     .exp-item::before {
       content: ''; position: absolute; top: 0; left: 0;
-      width: 2px; height: 0; background: var(--gradient);
-      transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 3px; height: 35%; min-height: 40px;
+      background: var(--gradient);
+      border-radius: 0 2px 2px 0;
+      opacity: 0.35;
+      transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
     }
-    .exp-item:hover { border-color: rgba(108,92,231,0.15); transform: translateX(4px); }
-    .exp-item:hover::before { height: 100%; }
-    .exp-date { font-size: 13px; letter-spacing: 0.06em; color: var(--text-dim); padding-top: 6px; }
-    .exp-date .exp-loc { display: block; margin-top: 4px; font-size: 12px; }
+    .exp-item:hover {
+      border-color: rgba(108,92,231,0.25);
+      transform: translateX(6px);
+      box-shadow: -6px 0 32px rgba(108,92,231,0.08), 0 8px 40px rgba(0,0,0,0.4);
+    }
+    .exp-item:hover::before { height: 100%; opacity: 1; }
+    .exp-item:hover::after { opacity: 1.5; }
+
+    .exp-date {
+      font-size: 12px; letter-spacing: 0.07em; color: var(--text-dim);
+      padding-top: 6px; font-family: var(--font-display);
+    }
+    .exp-date .exp-loc {
+      display: block; margin-top: 6px; font-size: 11px;
+      color: var(--text-dim); opacity: 0.6;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    /* Dot indicator on date column */
+    .exp-date::before {
+      content: ''; display: block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gradient);
+      margin-bottom: 10px; opacity: 0.7;
+    }
+
     .exp-content h3 {
       font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px);
       font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px;
     }
     .exp-company {
-      font-size: 14px; font-weight: 400; margin-bottom: 14px; display: block;
+      font-size: 13px; font-weight: 500; margin-bottom: 14px; display: inline-block;
       background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      letter-spacing: 0.02em;
     }
-    .exp-content p { font-size: clamp(13px, 1vw, 15px); font-weight: 300; line-height: 1.8; color: var(--text-mid); margin-bottom: 8px; }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .exp-content p { font-size: clamp(13px, 1vw, 14.5px); font-weight: 300; line-height: 1.85; color: var(--text-mid); margin-bottom: 10px; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
     .exp-tag {
-      font-size: 11px; letter-spacing: 0.04em; padding: 5px 14px;
-      border-radius: 30px; border: 1px solid rgba(255,255,255,0.06);
-      color: var(--text-dim); background: rgba(255,255,255,0.02);
-      transition: border-color 0.3s ease, color 0.3s ease;
+      font-size: 10.5px; letter-spacing: 0.05em; padding: 5px 13px;
+      border-radius: 30px;
+      border: 1px solid rgba(108,92,231,0.2);
+      color: rgba(200,195,255,0.65);
+      background: rgba(108,92,231,0.06);
+      transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
     }
-    .exp-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .exp-tag:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(108,92,231,0.12);
+    }
 
     /* ═══ PROJECTS ═══ */
     .projects-header {
