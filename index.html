@@ -423,6 +423,80 @@
       background: rgba(108,92,231,0.12);
     }
 
+    /* ═══ PUBLICATIONS ═══ */
+    .pub-list { margin-top: 56px; }
+    .pub-card {
+      display: block;
+      padding: 36px clamp(28px, 4vw, 44px);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #111118 0%, #0e0e14 100%);
+      border: 1px solid rgba(255,255,255,0.07);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+    }
+    .pub-card::after {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,206,255,0.08) 0%, transparent 70%);
+      pointer-events: none; transition: opacity 0.5s ease;
+    }
+    .pub-card:hover {
+      border-color: rgba(0,206,255,0.28);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45), 0 6px 28px rgba(0,206,255,0.08);
+    }
+    .pub-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+      margin-bottom: 18px;
+    }
+    .pub-venue {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent2); padding: 5px 14px; border-radius: 30px;
+      background: rgba(0,206,255,0.09); border: 1px solid rgba(0,206,255,0.22);
+    }
+    .pub-date {
+      font-size: 12px; color: var(--text-dim); letter-spacing: 0.05em;
+      font-family: var(--font-display);
+    }
+    .pub-title {
+      font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 700; line-height: 1.25; letter-spacing: -0.01em;
+      margin-bottom: 14px; max-width: 60ch;
+      transition: color 0.3s ease;
+    }
+    .pub-card:hover .pub-title { color: var(--accent2); }
+    .pub-authors {
+      font-size: clamp(13px, 1vw, 14.5px); color: var(--text-mid);
+      margin-bottom: 16px; line-height: 1.6;
+    }
+    .pub-authors .me { color: var(--text); font-weight: 600; }
+    .pub-desc {
+      font-size: clamp(13px, 1vw, 14.5px); font-weight: 300;
+      line-height: 1.85; color: var(--text-mid); max-width: 80ch;
+      margin-bottom: 22px;
+    }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .pub-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; letter-spacing: 0.04em; font-weight: 500;
+      padding: 9px 18px; border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03); color: var(--text-mid);
+      transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    }
+    .pub-btn:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(108,92,231,0.08); transform: translateY(-2px);
+    }
+    .pub-btn.primary {
+      border-color: rgba(0,206,255,0.3); color: var(--accent2);
+      background: rgba(0,206,255,0.07);
+    }
+    .pub-btn.primary:hover {
+      border-color: var(--accent2); background: rgba(0,206,255,0.14);
+    }
+    .pub-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
     /* ═══ PROJECTS ═══ */
     .projects-header {
       display: flex; justify-content: space-between; align-items: flex-end;
@@ -620,6 +694,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
+      <a href="#publications">Research</a>
       <a href="#projects">Work</a>
       <a href="#activities">Activities</a>
       <a href="#contact">Contact</a>
@@ -801,6 +876,38 @@
               <span class="exp-tag">Java</span><span class="exp-tag">React.js</span>
               <span class="exp-tag">Spring Data JPA</span><span class="exp-tag">REST APIs</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PUBLICATIONS ═══ -->
+  <section id="publications">
+    <div class="container">
+      <div class="section-label reveal"><span class="line"></span> Publications</div>
+      <h2 class="reveal" style="font-family:var(--font-display);font-size:clamp(32px,4vw,56px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;">Peer-reviewed<br>research</h2>
+
+      <div class="pub-list">
+        <div class="pub-card reveal">
+          <div class="pub-meta">
+            <span class="pub-venue">arXiv &middot; cs.CL</span>
+            <span class="pub-date">June 2026</span>
+          </div>
+          <div class="pub-title">When Better Codebooks Are Not Enough: Predictive Performance and Behavioral Reliability in LLM Political Event Coding</div>
+          <div class="pub-authors">Zixian He, <span class="me">Bharath Raahul Murugesan</span>, Patrick Brandt, Yibo Hu</div>
+          <p class="pub-desc">
+            A study of how expert-written codebooks can be operationalized for LLM-based political event coding — a fine-grained source–target relation classification task. We find that clearer codebooks substantially improve classification accuracy, yet these gains don't fully translate into behavioral reliability: models can produce correct labels while still failing under controlled changes to label names, codebook order, and definition mappings. The work argues that codebook-guided LLM systems should be judged not just on accuracy, but on whether they preserve the coding logic that makes outputs meaningful for social-science research.
+          </p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2606.06781" target="_blank" rel="noopener" class="pub-btn primary">
+              <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              View on arXiv
+            </a>
+            <a href="https://arxiv.org/pdf/2606.06781" target="_blank" rel="noopener" class="pub-btn">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              PDF
+            </a>
           </div>
         </div>
       </div>
