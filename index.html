@@ -840,10 +840,12 @@
         <div class="exp-item reveal">
           <div class="exp-date">Jan 2026 — Present<span class="exp-loc">Chicago, IL</span></div>
           <div class="exp-content">
-            <h3>Research Assistant</h3>
+            <h3>Graduate Student Researcher</h3>
             <span class="exp-company">Illinois Institute of Technology</span>
-            <p>Benchmarked 7 zero-shot text classification methods on a 1,033-example political event dataset across 3 granularity levels, achieving F1 scores (Binary 95.8, Quad 86.8, Root 71.4) that surpassed GPT-4 baselines using open-weight 9B-parameter models.</p>
-            <p>Built end-to-end experimentation pipeline integrating NLI inference (RoBERTa-Large-MNLI), local LLM serving via Ollama, and automated macro F1 evaluation on GPU infrastructure.</p>
+            <p>Demonstrated that codebook quality matters more than model scale for zero-shot political event classification: an enriched PLOVER codebook lifted Gemma2:9b above GPT-4 across all three PLOVER granularities without fine-tuning, at zero inference cost.</p>
+            <p>Designed a head-to-head evaluation of 7 prompting strategies across 4 open-source LLMs (Gemma2:9b, Qwen2.5:7b, Mistral 7B, LLaMA 3.1 8B) on two datasets totaling 1,838 examples: the PLOVER source-action-target benchmark and a cross-domain ACE/WikiEvents set.</p>
+            <p>Built two FAISS retrieval pipelines with sentence-transformer embeddings to study selective vs. complete codebook prompting, isolating why retrieval-augmented variants underperform a full static codebook on small open models: removing definitions breaks the contrastive disambiguation 9B models rely on.</p>
+            <p>Engineered the experimentation stack in Python end to end: local LLM serving via Ollama on RTX 6000 GPUs, an NLI baseline with RoBERTa-Large-MNLI, automated macro F1 evaluation at three label granularities, and a hierarchical mapping that propagates Rootcode predictions upward to Quad and Binary levels.</p>
             <div class="exp-tags">
               <span class="exp-tag">NLP</span><span class="exp-tag">PyTorch</span><span class="exp-tag">Ollama</span>
               <span class="exp-tag">RoBERTa</span><span class="exp-tag">Zero-Shot</span><span class="exp-tag">GPU</span>
@@ -919,10 +921,27 @@
     <div class="container">
       <div class="projects-header reveal">
         <h2>Selected<br>Work</h2>
-        <span class="count">09 Projects</span>
+        <span class="count">10 Projects</span>
       </div>
 
       <div class="project-grid">
+        <!-- Odette (Featured) -->
+        <div class="project-card featured reveal">
+          <div class="card-inner">
+            <div class="card-glow" style="background: #C084FC; top: -15%; right: -8%;"></div>
+            <div class="card-icon">O</div>
+            <a href="https://github.com/bharathraahul/Affliate-agent" target="_blank" class="card-link">
+              <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <span class="card-category">AI Agent / Full-Stack</span>
+            <div class="card-title">Odette — Autonomous Personal Shopper</div>
+            <p class="card-desc">Hackathon-built "company in a box" that runs the full funnel autonomously: a conversational personal-shopper agent uncovers intent through dialogue, recommends real products, and monetizes every pick with affiliate buy links. Spans a Guild.ai LLM agent, an OpenUI generative-UI chat, a zero-dependency Node backend streaming via OpenRouter, and a Facebook Messenger sales-floor worker.</p>
+            <div class="card-tech">
+              <span>Guild.ai</span><span>React</span><span>TypeScript</span><span>OpenRouter</span><span>Composio</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Vettura (Featured) -->
         <div class="project-card featured reveal">
           <div class="card-inner">
